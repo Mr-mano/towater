@@ -1,0 +1,22 @@
+vich_uploader:
+  db_driver: orm
+  mappings:
+    article_images:
+      uri_prefix:         '%app.path.article_uploads_dir%'
+      upload_destination: '%kernel.root_dir%/../public/%app.path.article_uploads_dir%'
+
+    utilisateur_images:
+      uri_prefix:         '%app.path.uploads_dir%'
+      upload_destination: '%kernel.root_dir%/../public/%app.path.uploads_dir%'
+
+    produit_images:
+      uri_prefix:         '%app.path.produit_uploads_dir%'
+      upload_destination: '%kernel.root_dir%/../public/%app.path.produit_uploads_dir%'
+
+    evenement_images:
+      uri_prefix:         '%app.path.evenement_uploads_dir%'
+      upload_destination: '%kernel.root_dir%/../public/%app.path.evenement_uploads_dir%'
+
+      inject_on_load: false
+      delete_on_update: true
+      delete_on_remove: true

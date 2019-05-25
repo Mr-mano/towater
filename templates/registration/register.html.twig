@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block sidebar %}
+{% endblock %}
+
+{% block body %}
+
+
+        <div class="container">
+            <div class="container_register">
+                <h1 class="h1_creation">Création d'un compte</h1>
+
+                {{ form_start(registrationForm) }}
+
+                    {{ form_row(registrationForm.nom) }}
+                    {{ form_row(registrationForm.prenom) }}
+                    {{ form_row(registrationForm.email) }}
+                    {{ form_row(registrationForm.telephone) }}
+                    {{ form_row(registrationForm.adresse) }}
+                    {{ form_row(registrationForm.commune) }}
+                    {{ form_row(registrationForm.codePostal) }}
+                    {{ form_row(registrationForm.departement) }}
+
+                    {{ form_row(registrationForm.photoFile) }}
+                    {{ form_row(registrationForm.siteWeb) }}
+                    {{ form_row(registrationForm.password) }}
+                    {{ form_row(registrationForm.password.second) }}
+                    <h3 class="h3_creation">Seulement si vous êtes une entreprise</h3>
+                    {{ form_row(registrationForm.nomEntreprise) }}
+                    {{ form_row(registrationForm.siret) }}
+                    <h3 class="h3_creation">Seulement si vous êtes une association ou fédération de pêche</h3>
+                    {{ form_row(registrationForm.nomAssociation) }}
+
+                <div class="container_buton">
+                    <button type="submit" class="btn btn-success">Valider</button>
+                    {{ form_end(registrationForm) }}
+                </div>
+            </div>
+    </div>
+
+{% endblock %}

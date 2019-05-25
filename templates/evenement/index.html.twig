@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenements{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% if app.user %}
+            <div class="container-titre-evenement">
+                <h1 class="mes-evenements"><i class="fas fa-image"></i> Mes événements...</h1>
+            </div>
+            <div class="separation-evenement-titre"></div>
+            <a class="creation_produit" href="{{ path('evenement_new') }}">Poster un evenement</a>
+            <div class="separation-evenement"></div>
+
+            {% for evenement in evenements %}
+                <div class="container__evenement">
+                    <div class="container__evenement-titre">
+                        <h3>{{ evenement.libelle }}</h3>
+                        <p class="date-article">{{ evenement.dateEvenement ? evenement.dateEvenement|date('d-m-Y') : '' }}</p>
+                    </div>
+                    <div class="container__contenu-evenement">
+                        <img class="card-img-top" src="{{ asset('uploads/evenements/' ~ evenement.photo) }}"
+                             alt="{{ evenement.photo }}">
+                        <div class="container__texte-evenement">
+                            <div class="container__nom">
+                                <span>{{ app.user.prenom }}</span>
+                                <span>{{ app.user.nom }}</span>
+                            </div>
+                            <div class="container__commune-evenement">
+                                <span>{{ app.user.commune }} - </span>
+                                <span>{{ app.user.departement }}</span>
+                            </div>
+                            <div class="container__commune-evenement">
+
+                                {% if evenement.texte()|length > 450 %}
+
+                                    <p class="container__p">
+                                        {{ evenement.texte | striptags | slice(0, 450) }}
+                                        ... <a class="lire-le-suite"
+                                               href="{{ path('evenement_show', {'id': evenement.id}) }}">(Lire la
+                                            suite)</a>
+                                    </p>
+
+                                {% else %}
+                                    <p class="container__p-evenement">
+                                        {{ evenement.texte }}
+                                    </p>
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">Voir +</a>
+                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">Modifier</a>
+                </div>
+
+                <div class="separation-evenement"></div>
+            {% endfor %}
+
+
+
+
+
+        {% else %}
+
+            <div class="container_creer_compte">
+                <h2>Vous devez être connecté pour consulter vos évenements</h2>
+                <div class="container_creer_a">
+                    <a class="creer_compte2" href="{{ path('app_register') }}">Créer un compte</a>
+                    <a class="creer_compte2" href="/login">Me connecter</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+    </div>
+{% endblock %}

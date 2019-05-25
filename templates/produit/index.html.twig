@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit index{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <div class="container">
+            <div class="titre_page_produit">
+                <h1 class="le_coin_titre">Gérez vos petites annonces</h1>
+                <h4 class="le_coin_slogan">Vendez du matériel ou des prestations liées à la pratique de la pêche</h4>
+                <p class="le_coin_slogan2">Professionnels ou amateurs</p>
+            </div>
+            <a class="creation_produit" href="{{ path('produit_new') }}">Déposer une annonce</a>
+
+
+            {% for produit in app.user.produits %}
+
+                <div class="container__produit">
+                    <div class="container__produit-image">
+                        <img class="image__produit" src="{{ asset('uploads/produits/' ~ produit.photo) }}"
+                             alt="{{ produit.photo }}">
+                    </div>
+                    <div class="container__produit-body">
+                        <h5 class="container__produit-title">{{ produit.libelle }}</h5>
+                        {% if produit.description()|length > 300 %}
+
+                            <p class="container__produit-text">
+                                {{ produit.description | striptags | slice(0, 300) }}
+                                ... <a class="lire-le-suite" href="{{ path('produit_show', {'id': produit.id}) }}">(Lire
+                                    la suite)</a>
+                            </p>
+
+                        {% else %}
+                            <p class="container__produit-text">
+                                {{ produit.description }}
+                            </p>
+                        {% endif %}
+                        <div class="container__produit-liens">
+                            <a class="voir-produit" href="{{ path('produit_edit', {'id': produit.id}) }}">modifier</a>
+                            <a class="voir-produit" href="{{ path('produit_show', {'id': produit.id}) }}">Voir +</a>
+
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+
+                <h2>Vous n'avez pas de produit</h2>
+
+            {% endfor %}
+
+
+        </div>
+    {% else %}
+        <div class="container">
+
+
+            <div class="container_creer_compte">
+                <h2>Vous devez être connecté pour consulter vos trucs</h2>
+                <div class="container_creer_a">
+                    <a class="creer_compte2" href="{{ path('app_register') }}">Créer un compte</a>
+                    <a class="creer_compte2" href="/login">Me connecter</a>
+                </div>
+            </div>
+
+
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,75 @@
+.container_register{
+margin: 20px;
+}
+
+.h1_creation, .h3_creation{
+  font-family: Pacifico;
+  font-size: 1.2rem;
+  margin: 30px 0 20px 0;
+  color: #00adb3;
+}
+.h1_creation{
+  font-size: 2rem;
+}
+
+.form-group{
+  width: 60%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+.form-control{
+  margin: 2%;
+  margin-left: 5%;
+}
+.container_buton{
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15px;
+  margin-top: 20px;
+  width: 60%;
+}
+.btn{
+  width: 150px;
+  margin-right: 4%;
+}
+label{
+ width: 30%;
+  min-width: 30%;
+}
+
+#utilisateur_edit > div > input{
+  width: 40%;
+  border-radius: 4px;
+  border: solid 1px lightgrey;
+  height: 35px;
+  padding-left: 2%;
+  margin-bottom: 15px;
+}
+#utilisateur_edit > div > .vich-image > input{
+  margin-bottom: 15px;
+}
+
+#utilisateur_edit > div > .vich-image > div > label{
+  display: none;
+}
+#utilisateur_edit > div > .vich-image > div > input{
+  display: none;
+}
+#utilisateur_edit > div > .vich-image > a{
+  display: none;
+}
+
+#utilisateur_edit > div{
+  display: flex;
+  padding-left: 4%;
+}
+.container_button_account{
+  display: flex;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  justify-content: center;
+}
+
+
+

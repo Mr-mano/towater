@@ -1,0 +1,118 @@
+@import "~bootstrap/scss/bootstrap";
+@import "~font-awesome/scss/font-awesome";
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Roboto');
+@import url('https://use.fontawesome.com/releases/v5.8.1/css/all.css');
+
+@import "./assets/css/login.scss";
+@import "./assets/css/hover.scss";
+@import "./assets/css/base.scss";
+@import "./assets/css/article.scss";
+@import "./assets/css/register.scss";
+@import "assets/css/produit-index.scss";
+@import "./assets/css/produit-show.scss";
+@import "./assets/css/responsive.scss";
+@import "./assets/css/page-produit.scss";
+@import "./assets/css/connexionpage.scss";
+@import "./assets/css/article-show.scss";
+@import "assets/css/evenement-show";
+@import "assets/css/evenement-page-accueil";
+
+
+*
+{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html, body{
+  color: #393e45;
+  font-family: 'Roboto', arial;
+  width: 100vw;
+  overflow-x: hidden;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+
+}
+a{
+  color: #393e45;
+}
+a:hover{
+  text-decoration: none;
+}
+li{
+  list-style-type: none;
+}
+.sidebar{
+  width: 10%;
+}
+main{
+  color: #393e45;
+  padding-top: 30px;
+  margin: 0;
+  height: calc(96vh - 130px);
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.container{
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.page_container {
+  display: flex;
+}
+
+main{
+  width: calc( 100vw - 250px);
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.container-home{
+  display: flex;
+  justify-content: space-between;
+
+}
+.main-article{
+  width: 60%;
+}
+.main-evenement{
+  width: 30%;
+  margin-top: -5%;
+}
+
+@media (max-width:990px) {
+    main {
+    }
+  .container__produit {
+      flex-direction: column;
+    }
+  }
+
+
+@media (max-width: 560px) {
+  main {
+  }
+  .container__produit {
+    flex-direction: column;
+  }
+  .sidebar{
+    display: none;
+  }
+}
+
+#test {
+  display: none;
+  cursor: pointer;
+}
+
+#test2 {
+  cursor: pointer;
+  display: block;
+}

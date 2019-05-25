@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page Produit{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+    {% if app.user %}
+
+        <div class="separation-produitshow"></div>
+        <div class="container__produitshow">
+            <div class="container__produitshow-title">
+                <h2 class="card-title produitshow">{{ produit.libelle }}</h2>
+                <div class="container__retour-button">
+
+                </div>
+            </div>
+            <img class="container__produit-imgshow" src="{{ asset('uploads/produits/' ~ produit.photo) }}"
+                 class="img-show"
+                 alt="alt="{{ produit.photo }}">
+            <div class="container__produit-texteshow">
+
+                <span class="prix-produit-show">{{ produit.prix }} €</span>
+                <p class="card-text">{{ produit.description }}</p>
+                <div class="container__card-text">
+                    <span>{{ produit.categorie }}</span>
+                    <span>{{ produit.utilisateur.codePostal }} {{ produit.utilisateur.commune }}</span>
+                    <span>{{ produit.dateCreation ? produit.dateCreation|date('d-m-Y') : '' }}</span>
+                </div>
+            </div>
+
+
+            <div class="container__button-produit-show">
+
+                <a href="{{ path('produit_index') }}" class="button-back">Retour</a>
+            </div>
+            </form>
+
+        </div>
+
+
+
+
+        </div>
+    {% else %}
+        <h5 class="card-title">{{ produit.libelle }}</h5>
+        <img src="{{ asset('uploads/produits/' ~ produit.photo) }}" class="card-img" alt="alt="{{ produit.photo }}">
+        <p class="card-text">{{ produit.description }}</p>
+        <p class="card-text">
+            <small class="text-muted">{{ produit.dateCreation ? produit.dateCreation|date('d-m-Y') : '' }}</small>
+        </p>
+
+
+
+    {% endif %}
+
+    </div>
+
+
+
+{% endblock %}

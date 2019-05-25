@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+
+
+    {% block title %}Article{% endblock %}
+
+    {% block body %}
+        <div class="container__show">
+
+
+            <div class="container__evenement-show">
+                <div class="container__evenement-titre-show">
+                    <h3>{{ evenement.libelle }}</h3>
+                    <p class="date-article">{{ evenement.dateEvenement ? evenement.dateEvenement|date('d-m-Y') : '' }}</p>
+                    <span>{{ evenement.utilisateur.nomAssociation }}</span>
+                    <div class="container__commune-evenement-show">
+                        <span>{{ evenement.utilisateur.commune }} - </span>
+                        <span>{{ evenement.utilisateur.departement }}</span>
+                    </div>
+                </div>
+                <div class="container__contenu-evenement-show">
+                    <img class="card-img-top" src="{{ asset('uploads/evenements/' ~ evenement.photo) }}"
+                         alt="{{ evenement.photo }}">
+                    <div class="container__texte-evenement-show">
+
+
+                        <h4>{{ evenement.libelle }}</h4>
+                        <p class="container__p-evenement-show">{{ evenement.texte }}</p>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="container__evenement-show-retour">
+                <a class="voir-produit" href="{{ path('homepage') }}">Retour</a>
+            </div>
+
+            <div class="separation-article-show"></div>
+
+
+        </div>
+
+    {% endblock %}

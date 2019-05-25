@@ -1,0 +1,75 @@
+.container {
+  &__evenement {
+    border: lightgrey solid 1px;
+    border-radius: 5px;
+    margin-bottom: 5%;
+    padding: 3%;
+  }
+
+  &__evenement-contenu > a >img {
+    width: 100%;
+  }
+
+  &__evenement-titre > h3 {
+    color: #71b639;
+    text-align: center;
+    margin-bottom: 5%;
+  }
+
+  &__evenement-p {
+    text-align: justify;
+    margin-top: 3%;
+  }
+
+  &__evenement-nom > h5 {
+    margin-top: 5%;
+    text-align: center;
+
+  }
+  &__evenement-commune > h6 {
+    color: lightgrey;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+}
+
+
+/*button animation */
+.voir-evenement{
+  font-family: Pacifico;
+  margin-right: 10px;
+  width: 120px;
+  height: 40px;
+  font-size: 1rem;
+  color: #71b639;
+  border-radius: 5px;
+  border: #71b639 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.voir-evenement:hover, .voir-evenement:focus, .voir-evenement:active{
+  -webkit-animation-name: hvr-back-pulse;
+  animation-name: hvr-back-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-color: #71b639;
+  background-color: #71b639;
+  color: #fff;
+  border: 1px solid #71b639;
+}

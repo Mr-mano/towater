@@ -1,0 +1,69 @@
+.container_creer_comptelogin{
+  display: flex;
+  flex-direction: column;
+  margin-top: 20%;
+  max-width: 70%;
+
+}
+.container_creer_compte{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  margin-top: 20%;
+  max-width: 70%;
+  border: lightgrey 1px solid;
+  border-radius: 5px;
+  min-width: 350px;
+  height: 200px;
+
+}
+
+
+.container_creer_compte > h2{
+  text-align: center;
+  margin: auto;
+}
+.container_creer_a{
+  display: flex;
+  padding-bottom: 20px;
+}
+
+
+.creer_compte2 {
+  width: 150px;
+  min-width: 130px;
+  height: 40px;
+  font-size: 1rem;
+  color: #d3d3d3;
+  border-radius: 5px;
+  border: #d3d3d3 1px solid;
+  margin: 10px;
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.creer_compte2:hover, .creer_compte2:focus, .creer_compte2:active {
+  -webkit-animation-name: hvr-back-pulse;
+  animation-name: hvr-back-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-color: #d3d3d3;
+  color: #fff;
+  border: 1px solid #d3d3d3;
+}

@@ -1,0 +1,151 @@
+
+.header_1{
+    width: 100vw;
+    height: 90px;
+    background-color: #393e45;
+    display: flex;
+    align-items: center;
+    padding-left: 3%;
+
+}
+.header_2{
+    width: 100vw;
+    height: 40px;
+    background-color: #00adb3;
+    top: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 3%;
+}
+.logo_header{
+    height: 80%;
+}
+
+.user_connecte{
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+}
+.avatar{
+    margin-top: 10%;
+    margin-bottom: 3%;
+    width: 130px;
+}
+.photo_profil{
+    width: 140px;
+    height: 140px;
+    margin-top: 10%;
+    margin-bottom: 3%;
+    border-radius: 50%;
+}
+
+.nom, .ville_dep{
+    margin: 0;
+}
+.ville_dep{
+    font-size: 14px;
+    color: #b1b1b2;
+}
+.nom{
+    font-size: 18px;
+    margin-top: 20px;
+}
+.nom-association{
+    margin: 0 10px 0 10px;
+    color: #b1b1b2;
+}
+
+
+.container_liens{
+    margin-top: 40px;
+    margin-bottom: 80px;
+
+}
+.container_sidebar{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.sidebar{
+    color: #393e45;
+    background-color: #fff;
+    min-width: 250px;
+    box-shadow: 5px 0px 5px -5px #656565;
+    min-height: 80vh;
+    max-width: 250px;
+}
+
+.li_accueil{
+    margin-right: 5px;
+    margin-top: 25px;
+}
+.container_liens_deconnecte{
+    margin-top: 30px;
+    text-align: left;
+}
+
+.a_connexion{
+    font-size: 18px;
+}
+.a_connexion:hover{
+    color: #d3d3d3;
+}
+.a_deconnexion{
+    width: 150px;
+    height: 40px;
+    font-size: 1rem;
+    color: #fff;
+    border-radius: 5px;
+    background-color: #fc3942;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.a_deconnexion:hover{
+    color: #fff;
+}
+.a_le_coin{
+    font-family: Pacifico;
+    font-size: 1.2rem;
+    margin-left: 3%;
+}
+.a_le_coin:hover{
+    color: #393e45;
+}
+
+.hvr-underline-from-left {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    position: relative;
+    overflow: hidden;
+}
+.hvr-underline-from-left:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 100%;
+    bottom: 0;
+    background: #00adb3;
+    height: 4px;
+    -webkit-transition-property: right;
+    transition-property: right;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+.hvr-underline-from-left:hover:before, .hvr-underline-from-left:focus:before, .hvr-underline-from-left:active:before {
+    right: 0;
+}
+.a_accueil{
+    font-size: 18px;
+}
+.a_accueil:hover{
+    color: #00adb3;
+}

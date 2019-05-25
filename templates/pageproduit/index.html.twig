@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page produit{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <div class="titre_page_produit">
+        <h1 class="le_coin_titre">Le coin des bonnes affaires</h1>
+        <h4 class="le_coin_slogan">Vendez ou achetez du matériel neuf ou d'occasion</h4>
+        <p class="le_coin_slogan2">Professionnels ou amateurs</p>
+    </div>
+    <div class="separation-article"></div>
+    <a class="creation_produit" href="{{ path('produit_new') }}">Déposer une annonce</a>
+    <div class="separation-article"></div>
+    {% for produit in produits | slice (0,20) %}
+
+        <div class="container__produit">
+            <div class="container__produit-image">
+                <img class="image__produit" src="{{ asset('uploads/produits/' ~ produit.photo) }}"
+                     alt="{{ produit.photo }}">
+            </div>
+            <div class="container__produit-body">
+                <h5 class="container__produit-title">{{ produit.libelle }}</h5>
+                {% if produit.description()|length > 300 %}
+
+                    <p class="container__produit-text">
+                        {{ produit.description | striptags | slice(0, 300) }}
+                        ...   <a class="lire-le-suite" href="{{ path('produit_show', {'id': produit.id}) }}">(Lire la suite)</a>
+                    </p>
+
+                {% else %}
+                    <p class="container__produit-text">
+                        {{ produit.description }}
+                    </p>
+                {% endif %}
+                <div class="container__produit-liens">
+
+                    <a class="voir-produit" href="{{ path('pageproduit_show', {'id': produit.id}) }}">Voir +</a>
+
+                </div>
+            </div>
+        </div>
+    {% else %}
+
+        <h2>Vous n'avez pas de produit</h2>
+
+    {% endfor %}
+
+    </div>
+{% endblock %}

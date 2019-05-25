@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    <title>{% block title %}to Water{% endblock %}</title>
+
+</head>
+<body>
+{% block header %}
+    <header class="header_1">
+        <img class="logo_header" src="{{ asset('images/logo_header.svg') }}" alt="logo to water">
+    </header>
+    <div class="header_2">
+        <a class="a_le_coin hvr-grow" href="{{ path('pageproduit') }}"><i class="far fa-hand-point-right"></i> Le coin
+            des bonnes affaires</a>
+    </div>
+{% endblock %}
+
+<div class="page_container">
+    {% block sidebar %}
+    <div class="sidebar">
+
+
+
+        <div class="container_sidebar">
+            {% if app.user %}
+            {% if app.user.photo %}
+                <img class="photo_profil" src="{{ asset('uploads/' ~ app.user.photo) }}" alt="{{ app.user.photo }}">
+            {% else %}
+                <img class="avatar" src="{{ asset('images/avatar_default.svg') }}" alt="avatar">
+            {% endif %}
+            <div class="container_connexion">
+                {% if app.user.NomAssociation %}
+
+                    <h4 class="nom-association">{{ app.user.NomAssociation }}</h4>
+                {% endif %}
+                <div class="container_connexion">
+                    {% if app.user.NomEntreprise %}
+                        <span>Professionel :</span>
+                        <h4 class="nom-association">{{ app.user.NomEntreprise }}</h4>
+                        <p class="ville_dep">siret : {{ app.user.siret }}</p>
+                    {% endif %}
+                    <p class="nom">{{ app.user.prenom }} {{ app.user.nom }}</p>
+                    <p class="ville_dep">{{ app.user.commune }} - {{ app.user.departement }}</p>
+                </div>
+            </div>
+            </div>
+            <div class="container_liens">
+                <ul>
+                    <li class="li_accueil">
+                        <a class="a_accueil hvr-underline-from-left" href="/"><i class="fas fa-home"></i> Accueil</a></li>
+                    <li class="li_accueil">
+                        <a class="a_accueil hvr-underline-from-left" href="{{ path('article_index') }}"><i class="fas fa-image"></i>
+                            Mes articles</a></li>
+                    <li class="li_accueil">
+                        <a class="a_accueil hvr-underline-from-left" href="{{ path('article_new') }}"><i
+                                    class="fas fa-camera-retro"></i> Poster un article</a></li>
+                    <li class="li_accueil">
+                        {% if app.user.NomAssociation %}
+                    <li class="li_accueil">
+                        <a class="a_accueil hvr-underline-from-left" href="{{ path('evenement_index') }}"><i
+                                    class="far fa-calendar-alt"></i> Mes événement</a></li>
+                    <li class="li_accueil">
+                        <a class="a_accueil hvr-underline-from-left" href="#"><i class="fas fa-user-friends"></i> Mes adhérants</a></li>
+                    {% else %}
+                        <li class="li_accueil">
+                            <a class="a_accueil hvr-underline-from-left" href="#"><i class="fas fa-user-friends"></i> Mes amis</a></li>
+                    {% endif %}
+
+                    <li class="li_accueil">
+                        <a class="a_accueil hvr-underline-from-left" href="{{ path('account') }}"><i class="fas fa-portrait"></i> Mon
+                            compte</a></li>
+                    <li class="li_accueil">
+                        <a class="a_accueil hvr-underline-from-left" href="{{ path('produit_index') }}"><i
+                                    class="fas fa-euro-sign"></i> Vendre des trucs</a>
+                    </li>
+                    <li class="li_accueil">
+                        <a class="a_accueil hvr-underline-from-left" href="/logout" data-toggle="modal" data-target="#exampleModal"><i
+                                    class="fas fa-times"></i> Déconnexion</a></li>
+                </ul>
+
+
+                {% else %}
+
+                    <img class="avatar" src="{{ asset('images/avatar_default.svg') }}" alt="avatar">
+                    <a class="creer_compte2" href="/login">connexion</a>
+                    <div class="container_liens_deconnecte">
+                        <ul>
+                            <li class="li_accueil">
+                                <a class="a_accueil hvr-underline-from-left" href="/"><i class="fas fa-home"></i> Accueil</a></li>
+                            <li class="li_accueil">
+                                <a class="a_accueil hvr-underline-from-left" href="{{ path('article_index') }}"><i
+                                            class="fas fa-image"></i> Mes articles</a></li>
+                            <li class="li_accueil">
+                                <a class="a_accueil hvr-underline-from-left" href="{{ path('article_new') }}"><i
+                                            class="fas fa-camera-retro"></i> Poster un article</a></li>
+                            <li class="li_accueil">
+                                <a class="a_accueil hvr-underline-from-left" href="#"><i class="fas fa-user-friends"></i> Mes amis</a>
+                            </li>
+                            <li class="li_accueil">
+                                <a class="a_accueil hvr-underline-from-left" href="{{ path('account') }}"><i
+                                            class="fas fa-portrait"></i> Mon compte</a>
+                            </li>
+                            <li class="li_accueil">
+                                <a class="a_accueil hvr-underline-from-left" href="{{ path('produit_index') }}"><i
+                                            class="fas fa-euro-sign"></i> Vendre des trucs</a></li>
+                        </ul>
+                    </div>
+
+                {% endif %}
+            </div>
+
+        </div>
+
+        {% endblock %}
+
+<main>
+        {% block body %}
+
+
+        {% endblock %}
+</main>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Déconnexion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Vous êtes sur le point de vous déconnecter
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <a class="a_deconnexion" href="/logout">Déconnexion</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</body>
+</html>

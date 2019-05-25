@@ -1,0 +1,145 @@
+.img-show{
+  width: 70%;
+
+}
+.container-produit-show{
+  padding: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.img-card{
+  width: 50%;
+}
+
+.retour{
+  width: 40px;
+}
+.separation-produitshow{
+  width: 70%;
+  height: 2px;
+  background-color: #e6e6e7;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+.container {
+  &__produitshow-title {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__produitshow {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+  }
+
+  &__produit-imgshow {
+    margin: auto;
+    width: 100%;
+  }
+
+  &__produit-texteshow {
+    margin-top: 5%;
+  }
+
+  &__produit-texteshow > p {
+    text-align: justify;
+  }
+
+  &__card-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__produit-contactshow > h4 {
+    margin: 15px 0 15px 0;
+    font-family: Pacifico;
+    color: #f9b53f;
+  }
+  &__produit-contactshow{
+    display: flex;
+    flex-direction: column;
+  }
+  &__button-produit-show{
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+.prix-produit-show{
+ font-size: 1.2rem;
+  color: #f9b53f;
+}
+
+.a_retour{
+  display: flex;
+  flex-direction: column;
+  color: #f9b53f;
+}
+.a_retour:hover{
+  color: #f9b53f;
+}
+.card-title.produitshow{
+  margin-top: 20px;
+}
+.label-form{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+.container_input_email{
+  margin-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 5%;
+}
+
+.button-back{
+  color: #fff;
+  width: 150px;
+  height: 40px;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-color: #f9b53f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 3%;
+}
+.button-back:hover{
+  color: #fff;
+}
+
+/*button animation */
+.button-back{
+   -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  overflow: hidden;
+  -webkit-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.button-back:hover, .button-back:focus, .button-back:active{
+  -webkit-animation-name: hvr-back-pulse;
+  animation-name: hvr-back-pulse;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  background-color: #F8A24F;
+  color: #fff;
+  border: 1px solid #F8A24F;
+}

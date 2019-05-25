@@ -1,0 +1,116 @@
+  .creation_produit{
+    width: 180px;
+    height: 40px;
+    font-size: 1rem;
+    color: #d3d3d3;
+    border-radius: 5px;
+    border: #d3d3d3 1px solid;
+    margin-bottom: 1%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .creation_produit:hover{
+    color: #b7b7b7;
+  }
+
+  .le_coin_titre{
+    font-family: Pacifico;
+    color: #00adb3;
+  }
+  .le_coin_slogan{
+    font-family: Pacifico;
+    color: #d3d3d3;
+    font-size: 1.2rem;
+    margin: 1%;
+  }
+  .le_coin_slogan2{
+    font-family: Pacifico;
+    color: #f8b43e;
+    font-size: 1.2rem;
+  }
+.titre_page_produit{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  .container {
+    &__produit {
+      border: 1px solid lightgrey;
+      border-radius: 5px;
+      width: 100%;
+      margin-bottom: 2%;
+      display: flex;
+      align-items: center;
+    }
+    &__produit-image{
+      max-width: 250px;
+
+    }
+    &__produit-body{
+      padding: 2%;
+      width: 100%;
+    }
+    &__produit-title{
+      font-size: 1.5rem
+    }
+    &__produit-text{
+      text-align: justify;
+    }
+    &__produit-liens{
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 10px 0 10px;
+    }
+    &__button-evenement-voir{
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  .image__produit{
+    max-width: 250px;
+  }
+
+
+  /*button animation */
+  .voir-produit{
+    font-family: Pacifico;
+    margin-right: 10px;
+    width: 120px;
+    height: 40px;
+    font-size: 1rem;
+    color: #f8b43e;
+    border-radius: 5px;
+    border: #f8b43e 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    overflow: hidden;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+    -webkit-transition-property: color, background-color;
+    transition-property: color, background-color;
+  }
+  .voir-produit:hover, .voir-produit:focus, .voir-produit:active{
+    -webkit-animation-name: hvr-back-pulse;
+    animation-name: hvr-back-pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-delay: 0.5s;
+    animation-delay: 0.5s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    background-color: #f8b43e;
+    background-color: #f8b43e;
+    color: #fff;
+    border: 1px solid #f8b43e;
+  }
+

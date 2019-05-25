@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel article{% endblock %}
+
+{% block body %}
+    <div class="container">
+        {% if app.user %}
+            <div class="container-titre-article">
+                <h1 class="mes-articles"><i class="fas fa-camera-retro"></i> Poster un article</h1>
+            </div>
+            <div class="separation-article-titre"></div>
+
+            {{ include('article/_form.html.twig') }}
+
+
+            <a href="{{ path('article_index') }}">Retour à la liste d'article</a>
+
+
+
+        {% else %}
+
+
+            <div class="container_creer_compte">
+                <h2>Vous devez être connecté pour poster un article </h2>
+                <div class="container_creer_a">
+                    <a class="creer_compte2" href="{{ path('app_register') }}">Créer un compte</a>
+                    <a class="creer_compte2" href="/login">Me connecter</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

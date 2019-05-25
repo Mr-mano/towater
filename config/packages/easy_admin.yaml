@@ -1,0 +1,12 @@
+easy_admin:
+    entities:
+        - App\Entity\Aime
+        - App\Entity\Album
+        - App\Entity\Article
+        - App\Entity\Commentaire
+        - App\Entity\Evenement
+        - App\Entity\EvenementCategorie
+        - App\Entity\Produit
+        - App\Entity\ProduitCategorie
+        - App\Entity\Suivre
+        - App\Entity\Utilisateur

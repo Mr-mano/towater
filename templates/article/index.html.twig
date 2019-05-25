@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block body %}
+    <div class="container col-sm-10">
+        {% if app.user %}
+        <div class="container-titre-article">
+        <h1 class="mes-articles"><i class="fas fa-image"></i> Mes articles...</h1>
+        </div>
+        <div class="separation-article-titre"></div>
+
+
+            {% for article in articles %}
+                <div class="container__article">
+                    <div class="container__article-titre">
+                    <h3>{{ article.album }}</h3>
+                    <p class="date-article">{{ article.dateCreation ? article.dateCreation|date('d-m-Y') : '' }}</p>
+                    </div>
+                    <div class="container__contenu">
+                        <img class="card-img-top" src="{{ asset('uploads/articles/' ~ article.photo) }}"
+                             alt="{{ article.photo }}">
+                        <div class="container__texte">
+                            <div class="container__nom">
+                            <span>{{ app.user.prenom }}</span>
+                            <span>{{ app.user.nom }}</span>
+                            </div>
+                            <div class="container__commune">
+                                <span>{{ app.user.commune }} - </span>
+                                <span>{{ app.user.departement }}</span>
+                            </div>
+                            <div class="container__commune">
+                                <h4>{{ article.libelle }}</h4>
+                                {% if article.texte()|length > 450 %}
+
+                                    <p class="container__p">
+                                        {{ article.texte | striptags | slice(0, 450) }}
+                                        ...   <a class="lire-le-suite" href="{{ path('article_show', {'id': article.id}) }}">(Lire la suite)</a>
+                                    </p>
+
+                                {% else %}
+                                    <p class="container__p">
+                                        {{ article.texte }}
+                                    </p>
+                                {% endif %}
+                            </div>
+                        {% if article.lienYoutube %}
+                            {{ article.lienYoutube }}
+                        {% endif %}
+                        </div>
+                    </div>
+
+
+                    <a href="{{ path('article_show', {'id': article.id}) }}">Voir +</a>
+                    <a href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+                    </div>
+                {% for commentaire in article.commentaires | slice (0,3) %}
+
+                    <div class="container__commentaire">
+                        {% if commentaire.utilisateur.photo %}
+                            <img class="photo_profil" src="{{ asset('uploads/' ~ commentaire.utilisateur.photo) }}"
+                                 alt="{{ commentaire.utilisateur.photo }}">
+                        {% else %}
+
+                            <img class="avatar" src="{{ asset('images/avatar_default.svg') }}" alt="avatar">
+                        {% endif %}
+
+                        <div class="container__commentaire-texte">
+                            <span class="container__commentaire-utilisateur">{{ commentaire.utilisateur }} :</span>
+                            <span>{{ commentaire.texte }}</span>
+                        </div>
+                        <div class="container__date-commentaire"><small>{{ commentaire.dateCreation ? commentaire.dateCreation|date('d-m-Y') : '' }}</small></div>
+                    </div>
+
+                {% endfor %}
+                <div class="separation-article"></div>
+                {% endfor %}
+
+
+
+
+
+        {% else %}
+
+            <div class="container_creer_compte">
+                <h2>Vous devez être connecté pour consulter vos articles</h2>
+                <div class="container_creer_a">
+                    <a class="creer_compte2" href="{{ path('app_register') }}">Créer un compte</a>
+                    <a class="creer_compte2" href="/login">Me connecter</a>
+                </div>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

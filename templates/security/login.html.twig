@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ asset('build/app.css') }}">
+    
+    <title>{% block title %}to Water{% endblock %}</title>
+    
+    </head>
+ 
+<body class="body_connection">
+    <div class="container_login">
+        <div class="container_logo">
+            <img class="logo" src="{{ asset('images/logo_login.svg') }}" alt="logo to water">
+        </div>
+
+            <form class="form_login" method="post">
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                
+                <label for="inputEmail" class="sr-only">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+                <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                >
+
+                {#
+                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                    See https://symfony.com/doc/current/security/remember_me.html
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+                #}
+            
+                <button class="input_valider hvr-back-pulse" type="submit">Connexion</button>
+
+
+            <div class="container_mdp_oublie">
+                <a class="mdp_oublie hvr-grow " href="#">Mot de passe oublié</a>
+            </div>
+
+            <span class="pas_de_compte">Je n'ai pas de compte</span>
+                <div class="container_creer_comptelogin">
+                <a class="creer_compte hvr-back-pulse" href="{{ path('app_register') }}">Créer un compte</a>
+                </div>
+            </form>
+
+</div>
+</body>
+
+</html>

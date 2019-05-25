@@ -1,0 +1,155 @@
+.mes-articles{
+  font-family: Roboto;
+  color: #00adb3;
+  font-size: 2rem;
+}
+.separation-article-titre{
+  width: 100%;
+  height: 2px;
+  background-color: #00adb3;
+  margin: 10px 0 50px 0;
+}
+
+.separation-article-accueil{
+  width: 60%;
+  height: 2px;
+  background-color: #00adb3;
+  margin: 10px 0 50px 0;
+}
+
+.container-titre-article{
+  margin-bottom: 25px;
+
+}
+
+.container_article_new{
+  margin-left: 350px;
+}
+
+.container{
+  &__article{
+    margin-bottom: 20px;
+  }
+
+  &__article > h2{
+      color: #71b639;
+      font-family: Pacifico;
+  }
+
+  &__contenu{
+    display: flex;
+    flex-direction: column;
+  }
+  &__contenu > img{
+    width: 100%;
+    height: auto;
+
+  }
+  &__texte{
+    min-width: 250px;
+    padding-top: 2%;
+  }
+  &__article-titre{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -10px;
+  }
+  &__nom{
+    font-size: 18px;
+    margin-bottom: -5px;
+  }
+  &__commune{
+    font-size: 14px;
+    color: #b1b1b2;
+  }
+  &__commune > p{
+    min-width: 250px;
+    color: #393e45;
+    text-align: justify;
+  }
+  &__commune > h4{
+    color: #393e45;
+  }
+  &__button-article-voir{
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+  }
+  &__commentaire{
+    align-items: center;
+    display: flex;
+    margin-bottom: 3px;
+  }
+  &__commentaire:nth-child(even){
+    margin-left: 25px;
+  }
+  &__commentaire:nth-child(odd){
+    margin-left: 90px;
+  }
+  &__commentaire > img{
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    margin-bottom: 5px;
+  }
+  &__commentaire-texte{
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    border: lightgrey 1px solid;
+    border-radius: 15px;
+    margin-left: 25px;
+    width: 60%;
+    min-height: 40px;
+    padding-left: 20px;
+    color: lightgrey;
+  }
+  &__commentaire-utilisateur{
+    color: #00adb3;
+    margin-right: 10px;
+  }
+  &__date-commentaire{
+    margin-left: 15px;
+    color: #00adb3;
+  }
+  &__voir-commentaire{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+}
+.lire-le-suite{
+  color: #00adb3;
+}
+
+
+.date-article{
+  padding-top: 8px;
+}
+.card-img-top{
+  width: 50%;
+  height: 50%;
+}
+
+.separation-article{
+  width: 100%;
+  height: 2px;
+  background-color: #e6e6e7;
+  margin: 30px 0 30px 0;
+}
+
+
+@media(max-width: 1200px) {
+  /* For mobile phones: */
+  .container__contenu{
+    flex-direction: column;
+  }
+  .card-img-top{
+    width: 100%;
+    height: 100%;
+  }
+  .container__article-titre{
+    padding-right: 0;
+  }
+}
+

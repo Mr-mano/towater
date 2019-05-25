@@ -1,0 +1,31 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+    {% if app.user %}
+        <div class="container-titre-article">
+            <h1 class="mes-articles"><i class="fas fa-portrait"></i> Mon
+                compte</h1>
+        </div>
+        <div class="separation-article-titre"></div>
+        {{ form_start(form) }}
+            {{ form_widget(form) }}
+        <div class="container_button_account">
+            <button class="btn btn-success">{{ button_label|default('Valider') }}</button>
+             <a class="a_deconnexion" href="{{ path('article_index') }}">Annuler</a>
+        {{ form_end(form) }}
+        </div>
+
+    {% else %}
+
+        <div class="container_creer_compte">
+            <h2>Vous devez être connecté pour visualiser ton compte</h2>
+            <div class="container_creer_a">
+                <a class="creer_compte2" href="{{ path('app_register') }}">Créer un compte</a>
+                <a class="creer_compte2" href="/login">Me connecter</a>
+            </div>
+        </div>
+        </div>
+    {% endif %}
+{% endblock %}

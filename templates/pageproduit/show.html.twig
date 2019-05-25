@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page Produit{% endblock %}
+
+{% block body %}
+    <div class="container">
+
+        {% if app.user %}
+            <div class="titre_page_produit">
+                <h1 class="le_coin_titre">Le coin des bonnes affaires</h1>
+                <h4 class="le_coin_slogan">Vendez ou achetez du matériel neuf ou d'occasion</h4>
+                <p class="le_coin_slogan2">Professionnels ou amateurs</p>
+            </div>
+            <div class="separation-produitshow"></div>
+            <div class="container__produitshow">
+                <div class="container__produitshow-title">
+                    <h2 class="card-title produitshow">{{ produit.libelle }}</h2>
+                    <div class="container__retour-button">
+                        <a class="a_retour" href="{{ path('pageproduit') }}">
+                            <img class="retour" src="{{ asset('images/retour.svg') }}" alt="">
+                            <span>Retour</span>
+                        </a>
+                    </div>
+                </div>
+                <img class="container__produit-imgshow" src="{{ asset('uploads/produits/' ~ produit.photo) }}"
+                     class="img-show"
+                     alt="alt="{{ produit.photo }}">
+                <div class="container__produit-texteshow">
+
+                    <span class="prix-produit-show">{{ produit.prix }}</span>
+                    <p class="card-text">{{ produit.description }}</p>
+                    <div class="container__card-text">
+                        <span>{{ produit.categorie }}</span>
+                        <span>{{ produit.utilisateur.codePostal }} {{ produit.utilisateur.commune }}</span>
+                        <span>{{ produit.dateCreation ? produit.dateCreation|date('d-m-Y') : '' }}</span>
+                    </div>
+                </div>
+                <div class="container__produit-contactshow">
+                    <h4>Contacte :</h4>
+                    <span>{{ produit.utilisateur.prenom }} {{ produit.utilisateur.nom }}</span>
+                    <span><i class="fas fa-phone"></i> {{ produit.utilisateur.telephone }}</span>
+                </div>
+                <div class="container__produit-contactshow">
+                    <h4>Contacter le vendeur par email :</h4>
+                    <form id="contact" method="post" action="traitement_formulaire.php">
+                        <fieldset>
+                            <div class="label-form">
+                                <label for="objet">Titre :</label>
+                                <input type="text" value="{{ produit.libelle }}" id="objet" name="objet" />
+                            </div>
+                            <div class="label-form">
+                                <label for="message">Votre Message :</label>
+                                <textarea id="message" name="message" cols="30" rows="8" ></textarea>
+                            </div>
+                        </fieldset>
+
+                        <div class="container_input_email">
+
+                            <a href="{{ path('pageproduit') }}"  class="button-back">Retour</a>
+                            <input class="btn btn-success" type="submit" name="envoi" value="Valider" />
+                        </div>
+                    </form>
+
+                </div>
+
+
+
+
+            </div>
+        {% else %}
+            <h5 class="card-title">{{ produit.libelle }}</h5>
+            <img src="{{ asset('uploads/produits/' ~ produit.photo) }}" class="card-img" alt="alt="{{ produit.photo }}">
+            <p class="card-text">{{ produit.description }}</p>
+            <p class="card-text">
+                <small class="text-muted">{{ produit.dateCreation ? produit.dateCreation|date('d-m-Y') : '' }}</small>
+            </p>
+
+
+
+        {% endif %}
+
+    </div>
+
+
+
+{% endblock %}

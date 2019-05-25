@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <div class="container__show col-sm-10">
+
+
+        <div class="container__article-show">
+            <div class="container__article-titre-show">
+                <h3>{{ article.album }}</h3>
+                <p class="date-article">{{ article.dateCreation ? article.dateCreation|date('d-m-Y') : '' }}</p>
+            </div>
+            <div class="container__contenu-show">
+
+                <img class="card-img-top" src="{{ asset('uploads/articles/' ~ article.photo) }}"
+                     alt="{{ article.photo }}">
+
+                <div class="container__texte-show">
+                    <div class="container__nom">
+                        <span>{{ article.utilisateur.prenom }}</span>
+                        <span>{{ article.utilisateur.nom }}</span>
+                    </div>
+                    <div class="container__commune">
+                        <span>{{ article.utilisateur.commune }} - </span>
+                        <span>{{ article.utilisateur.departement }}</span>
+                    </div>
+                    <h4>{{ article.libelle }}</h4>
+                    <p class="container__p-show">{{ article.texte }}</p>
+
+                    {% if article.lienYoutube %}
+                        {{ article.lienYoutube }}
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+        <div class="container__button-article-retour">
+            <a class="voir-produit" href="{{ path('homepage') }}">Retour</a>
+        </div>
+
+        {% if article.noKill %}
+        <div class="no-kill">
+            <img id="nokill" class="nokill" src="{{ asset('images/no-kill.svg') }}" alt="logo to water">
+        </div>
+        {% endif %}
+
+
+        <div class="separation-article-show"></div>
+
+
+        {% for commentaire in article.commentaires %}
+
+            <div class="container__commentaire">
+
+                {% if commentaire.utilisateur.photo %}
+                    <img class="photo_profil" src="{{ asset('uploads/' ~ commentaire.utilisateur.photo) }}"
+                         alt="{{ commentaire.utilisateur.photo }}">
+                {% else %}
+
+                    <img class="avatar" src="{{ asset('images/avatar_default.svg') }}" alt="avatar">
+                {% endif %}
+
+
+                <div class="container__commentaire-texte">
+                    <span class="container__commentaire-utilisateur">{{ commentaire.utilisateur }} :</span>
+                    <span>{{ commentaire.texte }}</span>
+                </div>
+                <div class="container__date-commentaire">
+                    <small>{{ commentaire.dateCreation ? commentaire.dateCreation|date('d-m-Y') : '' }}</small>
+                </div>
+            </div>
+
+        {% endfor %}
+        <div class="container__commentaire-article">
+            {% if app.user %}
+                {{ render(controller('App\\Controller\\CommentaireController:new', {'id' : article.id })) }}
+            {% endif %}
+        </div>
+        <div class="separation-article-show"></div>
+
+    </div>
+
+
+
+{% endblock %}

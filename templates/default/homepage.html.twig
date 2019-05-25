@@ -1,0 +1,170 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block body %}
+
+
+
+        <div class="container-titre-article">
+            <h1 class="mes-articles"><i class="fas fa-home"></i> Accueil</h1>
+        </div>
+        <div class="separation-article-accueil"></div>
+    <div class="container-home">
+        <div class="main-article">
+            {% for article in articles %}
+            <div class="container__article">
+                <div class="container__article-titre">
+                    <h3>{{ article.album }}</h3>
+                    <p class="date-article">{{ article.dateCreation ? article.dateCreation|date('d-m-Y') : '' }}</p>
+                </div>
+                <div class="container__contenu">
+                    <img class="card-img-top" src="{{ asset('uploads/articles/' ~ article.photo) }}"
+                         alt="{{ article.photo }}">
+                    <div class="container__texte">
+                        <div class="container__nom">
+                            <span>{{ article.utilisateur.prenom }}</span>
+                            <span>{{ article.utilisateur.nom }}</span>
+                        </div>
+                        <div class="container__commune">
+                            <span>{{ article.utilisateur.commune }} - </span>
+                            <span>{{ article.utilisateur.departement }}</span>
+                        </div>
+                        <div class="container__commune">
+                            <h4>{{ article.libelle }}</h4>
+                            {% if article.texte()|length > 450 %}
+
+                                <p class="container__p">
+                                    {{ article.texte | striptags | slice(0, 450) }}
+                                    ... <a class="lire-le-suite" href="{{ path('article_show', {'id': article.id}) }}">(Lire
+                                        la suite)</a>
+                                </p>
+
+                            {% else %}
+                                <p class="container__p">
+                                    {{ article.texte }}
+                                </p>
+                            {% endif %}
+                        </div>
+                        {% if article.lienYoutube %}
+                            {{ article.lienYoutube }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="container__button-article-voir">
+                    <a class="voir-produit" href="{{ path('article_show', {'id': article.id}) }}">Voir +</a>
+                </div>
+
+                {% for commentaire in article.commentaires | slice (0,3) %}
+
+                    <div class="container__commentaire">
+
+                        {% if commentaire.utilisateur.photo %}
+                            <img class="photo_profil" src="{{ asset('uploads/' ~ commentaire.utilisateur.photo) }}"
+                                 alt="{{ commentaire.utilisateur.photo }}">
+                        {% else %}
+
+                            <img class="avatar" src="{{ asset('images/avatar_default.svg') }}" alt="avatar">
+                        {% endif %}
+
+
+                        <div class="container__commentaire-texte">
+                            <span class="container__commentaire-utilisateur">{{ commentaire.utilisateur }} :</span>
+                            <span>{{ commentaire.texte }}</span>
+                        </div>
+                        <div class="container__date-commentaire">
+                            <small>{{ commentaire.dateCreation ? commentaire.dateCreation|date('d-m-Y') : '' }}</small>
+                        </div>
+                    </div>
+
+                {% endfor %}
+                {% if article.commentaires |length > 3 %}
+                    <div class="container__voir-commentaire">
+                        <a class="lire-le-suite" href="{{ path('article_show', {'id': article.id}) }}">Voir tous les
+                            commentaires</a>
+                    </div>
+                {% endif %}
+                <div class="separation-article"></div>
+
+
+            </div>
+            {% endfor %}
+        </div>
+
+
+
+    <div class="main-evenement">
+        {% for evenement in evenements %}
+
+
+        <div class="container__evenement">
+            <div class="container__evenement-titre">
+                <h3>{{ evenement.libelle }}</h3>
+
+            </div>
+            <div class="container__evenement-contenu">
+                <a href="{{ path('evenement_show', {'id': evenement.id}) }}"><img class="card-img-top" src="{{ asset('uploads/evenements/' ~ evenement.photo) }}"
+                     alt="{{ evenement.photo }}"></a>
+                <div class="container__evenement-texte">
+                    <div class="container__evenement-nom">
+                        <h5>{{ evenement.utilisateur.nomAssociation }}</h5>
+                    </div>
+                    <div class="container__evenement-commune">
+                        <h6>{{ evenement.utilisateur.commune }} - {{ evenement.utilisateur.departement }}</h6>
+
+                    </div>
+                    <div class="container__evenement-commune">
+
+                        {% if evenement.texte()|length > 450 %}
+
+                            <p class="container__evenement-p">
+                                {{ evenement.texte | striptags | slice(0, 450) }}
+                                ... <a class="lire-le-suite"
+                                       href="{{ path('evenement_show', {'id': evenement.id}) }}">(Lire
+                                    la suite)</a>
+                            </p>
+
+                        {% else %}
+                            <p class="container__evenement-p">
+                                {{ evenement.texte }}
+                            </p>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+            <div class="container__button-evenement-voir">
+                <a class="voir-evenement" href="{{ path('evenement_show', {'id': evenement.id}) }}">Voir +</a>
+            </div>
+
+        </div>
+            {% endfor %}
+
+    </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+         aria-labelledby="exampleModalCenterTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Déconnexion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Vous êtes sur le point de vous déconnecter
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <a class="a_deconnexion" href="/logout">Déconnexion</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
