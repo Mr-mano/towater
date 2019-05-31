@@ -18,8 +18,20 @@
                     <p class="date-article">{{ article.dateCreation ? article.dateCreation|date('d-m-Y') : '' }}</p>
                     </div>
                     <div class="container__contenu">
-                        <img class="card-img-top" src="{{ asset('uploads/articles/' ~ article.photo) }}"
-                             alt="{{ article.photo }}">
+                        {% for picture in article.pictures | slice (0,1)%}
+
+
+                            <img class="card-img-top" src="{{ asset('uploads/articles/' ~ picture.photo) }}"
+                                 alt="{{ picture.photo }}">
+
+                        {% endfor %}
+
+                        {% if article.pictures |length > 1 %}
+                            <div class="container__voir-commentaire">
+                                <a class="lire-le-suite" href="{{ path('article_show', {'id': article.id}) }}">Voir toutes les
+                                    photos</a>
+                            </div>
+                        {% endif %}
                         <div class="container__texte">
                             <div class="container__nom">
                             <span>{{ app.user.prenom }}</span>

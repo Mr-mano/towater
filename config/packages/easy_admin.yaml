@@ -10,3 +10,4 @@ easy_admin:
         - App\Entity\ProduitCategorie
         - App\Entity\Suivre
         - App\Entity\Utilisateur
+        - App\Entity\PhotoArticle

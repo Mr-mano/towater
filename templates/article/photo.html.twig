@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Photo{% endblock %}
+
+{% block body %}
+<div class="container__photo">
+
+
+        <div id="modal">
+            <div id="imgSizer">
+                <div id="imgHolder">
+                    <img alt="Modal Image" id="modalImg">
+                </div>
+            </div>
+            <span id="close"><i class="fas fa-times"></i></span>
+            <button id="larr"><i class="fas fa-angle-left"></i></button>
+            <button id="rarr"><i class="fas fa-angle-right"></i></button>
+        </div>
+
+        <div id="gallery">
+
+            {% for picture in pictures %}
+            <img class="galerie-photo" src="{{ asset('uploads/articles/' ~ picture.photo) }}"
+                 alt="{{ picture.photo }}">
+            {% endfor %}
+
+        </div>
+
+</div>
+
+            <div class="container__button-article-retour">
+                <a href="javascript:history.back()">Retour</a>
+            </div>
+
+
+    <script>
+
+
+
+    </script>
+    {% endblock %}

@@ -3,7 +3,7 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <div class="container__show col-sm-10">
+    <div class="container__show">
 
 
         <div class="container__article-show">
@@ -13,9 +13,35 @@
             </div>
             <div class="container__contenu-show">
 
-                <img class="card-img-top" src="{{ asset('uploads/articles/' ~ article.photo) }}"
-                     alt="{{ article.photo }}">
+                <div class="container__photo">
 
+                    <div id="modal">
+                        <div id="imgSizer">
+                            <div id="imgHolder">
+                                <img alt="Modal Image" id="modalImg">
+                            </div>
+                        </div>
+                        <span id="close"><i class="fas fa-times"></i></span>
+                        <button id="larr"><i class="fas fa-angle-left"></i></button>
+                        <button id="rarr"><i class="fas fa-angle-right"></i></button>
+                    </div>
+
+                    <div id="gallery">
+                        {% for picture in article.pictures | slice (0,1)%}
+
+
+                            <img class="photo-article-show" src="{{ asset('uploads/articles/' ~ picture.photo) }}"
+                                 alt="{{ picture.photo }}">
+
+                        {% endfor %}
+                        {% for picture in article.pictures | slice (1,10) %}
+                            <img class="galerie-photo" style="width: 15%;" src="{{ asset('uploads/articles/' ~ picture.photo) }}"
+                                 alt="{{ picture.photo }}">
+                        {% endfor %}
+
+                    </div>
+
+                </div>
                 <div class="container__texte-show">
                     <div class="container__nom">
                         <span>{{ article.utilisateur.prenom }}</span>
@@ -34,18 +60,17 @@
                 </div>
             </div>
 
-        </div>
-        <div class="container__button-article-retour">
-            <a class="voir-produit" href="{{ path('homepage') }}">Retour</a>
-        </div>
-
         {% if article.noKill %}
         <div class="no-kill">
             <img id="nokill" class="nokill" src="{{ asset('images/no-kill.svg') }}" alt="logo to water">
         </div>
         {% endif %}
 
+            <div class="container__button-article-retour">
+                <a class="voir-produit"href="javascript:history.back()">Retour</a>
+            </div>
 
+        </div>
         <div class="separation-article-show"></div>
 
 

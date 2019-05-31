@@ -3,15 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use App\Entity\Picture;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentaireRepository;
+use App\Repository\PictureRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
@@ -27,6 +28,7 @@ class ArticleController extends AbstractController
         return $this->render('article/index.html.twig', [
             'articles' => $articleRepository->findBy(["utilisateur" => $this->getUser()], ["date_creation" => "DESC"]),
             'commentaires' =>$commentaireRepository->findBy(["utilisateur" => $this->getUser()], ["date_creation" => "DESC"])
+
         ]);
     }
 
@@ -68,7 +70,6 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="article_edit", methods={"GET","POST"})
-     * @IsGranted("ROLE_USER")
      */
     public function edit(Request $request, Article $article): Response
     {
@@ -107,4 +108,22 @@ class ArticleController extends AbstractController
 
         return $this->redirectToRoute('article_index');
     }
+
+    /**
+     * @Route("/{id}/photo", name="article_photo", methods={"GET","POST"})
+     */
+    public function photo(Article $article, Picture $picture)
+    {
+        $em = $this->getDoctrine();
+        $picture = $em->getRepository(Picture::class)->findBy(['article' => $article]);
+
+        return $this->render('article/photo.html.twig', [
+            'pictures' => $picture,
+
+        ]);
+
+
+    }
+
+
 }

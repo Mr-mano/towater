@@ -16,6 +16,7 @@
 @import "./assets/css/article-show.scss";
 @import "assets/css/evenement-show";
 @import "assets/css/evenement-page-accueil";
+@import "assets/css/photo";
 
 
 *
@@ -81,10 +82,14 @@ main{
 }
 .main-article{
   width: 60%;
+  max-width: 800px;
+  min-width: 450px;
 }
 .main-evenement{
   width: 30%;
   margin-top: -5%;
+  max-width: 350px;
+  min-width: 200px;
 }
 
 @media (max-width:990px) {

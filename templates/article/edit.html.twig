@@ -3,11 +3,22 @@
 {% block title %}Edit Article{% endblock %}
 
 {% block body %}
+<div class="container">
+
+    <div class="col-sm-6" style="display:flex;">
+        {% for picture in article.pictures %}
+            <img class="card-img-top" src="{{ asset('uploads/articles/' ~ picture.photo) }}"
+                 alt="{{ picture.photo }}">
+        {% endfor %}
+    </div>
+
+</div>
+
     <div class="container">
 
-        {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('article/_form.html.twig', {'button_label': 'Valider'}) }}
 
-        <a href="{{ path('article_index') }}">back to list</a>
+        <a href="{{ path('article_index') }}">Retour</a>
 
         {{ include('article/_delete_form.html.twig') }}
     </div>

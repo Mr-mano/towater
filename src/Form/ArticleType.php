@@ -19,9 +19,10 @@ class ArticleType extends AbstractType
         $builder
             ->add('libelle')
             ->add('texte')
-            ->add('photoFile', VichImageType::class, [
+            ->add('pictureFiles', FileType::class, [
                 'label' => 'Photo',
                 'required' => false,
+                'multiple' => true
                 ])
             ->add('lien_youtube')
             ->add('album')
