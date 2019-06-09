@@ -8,6 +8,7 @@ use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentaireRepository;
 use App\Repository\PictureRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,11 +24,14 @@ class ArticleController extends AbstractController
     /**
      * @Route("/", name="article_index", methods={"GET"})
      */
-    public function index(ArticleRepository $articleRepository, CommentaireRepository $commentaireRepository): Response
+    public function index( ArticleRepository $articleRepository, CommentaireRepository $commentaireRepository): Response
     {
+
+
         return $this->render('article/index.html.twig', [
             'articles' => $articleRepository->findBy(["utilisateur" => $this->getUser()], ["date_creation" => "DESC"]),
-            'commentaires' =>$commentaireRepository->findBy(["utilisateur" => $this->getUser()], ["date_creation" => "DESC"])
+            'commentaires' =>$commentaireRepository->findBy(["utilisateur" => $this->getUser()], ["date_creation" => "DESC"]),
+
 
         ]);
     }

@@ -57,7 +57,9 @@ class Utilisateur implements UserInterface, \Serializable
      */
     private $commune;
 
+
     /**
+     * @Assert\Regex("/^[0-9]{5}$/")
      * @ORM\Column(type="string", length=255)
      */
     private $code_postal;

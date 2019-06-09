@@ -31,7 +31,7 @@
 
                     {% if article.pictures |length > 1 %}
                         <div class="container__voir-commentaire">
-                            <a class="lire-le-suite" href="{{ path('article_show', {'id': article.id}) }}">Voir toutes les
+                            <a class="lire-le-suite" href="{{ path('default_show', {'id': article.id}) }}">Voir toutes les
                                 photos</a>
                         </div>
                     {% endif %}
@@ -51,7 +51,7 @@
 
                                 <p class="container__p">
                                     {{ article.texte | striptags | slice(0, 450) }}
-                                    ... <a class="lire-le-suite" href="{{ path('article_show', {'id': article.id}) }}">(Lire
+                                    ... <a class="lire-le-suite" href="{{ path('default_show', {'id': article.id}) }}">(Lire
                                         la suite)</a>
                                 </p>
 
@@ -68,7 +68,7 @@
                 </div>
 
                 <div class="container__button-article-voir">
-                    <a class="voir-produit" href="{{ path('article_show', {'id': article.id}) }}">Voir +</a>
+                    <a class="voir-produit" href="{{ path('default_show', {'id': article.id}) }}">Voir +</a>
                 </div>
 
                 {% for commentaire in article.commentaires | slice (0,3) %}
@@ -96,7 +96,7 @@
                 {% endfor %}
                 {% if article.commentaires |length > 3 %}
                     <div class="container__voir-commentaire">
-                        <a class="lire-le-suite" href="{{ path('article_show', {'id': article.id}) }}">Voir tous les
+                        <a class="lire-le-suite" href="{{ path('default_show', {'id': article.id}) }}">Voir tous les
                             commentaires</a>
                     </div>
                 {% endif %}
@@ -180,6 +180,8 @@
             </div>
         </div>
     </div>
-
+    <div class="pagination d-flex justify-content-center">
+        {{ knp_pagination_render(articles) }}
+    </div>
 
 {% endblock %}

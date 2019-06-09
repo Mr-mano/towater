@@ -1,6 +1,9 @@
 .container_register{
 margin: 20px;
 }
+.container_register > form > div > input{
+  width: 50%;
+}
 
 .h1_creation, .h3_creation{
   font-family: Pacifico;
@@ -55,6 +58,7 @@ label{
 }
 #utilisateur_edit > div > .vich-image > div > input{
   display: none;
+
 }
 #utilisateur_edit > div > .vich-image > a{
   display: none;
@@ -69,6 +73,19 @@ label{
   margin-top: 4%;
   margin-bottom: 4%;
   justify-content: center;
+}
+#registration_form_photoFile_file{
+  margin-bottom: 20px;
+}
+#registration_form_codePostal{
+  margin-top: 10px;
+}
+#registration_form_telephone{
+  margin-top: 10px;
+}
+.required{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 

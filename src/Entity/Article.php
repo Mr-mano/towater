@@ -24,6 +24,7 @@ class Article
      * @ORM\Column(type="string", length=255)
      */
     private $libelle;
+
     /**
      * @ORM\Column(type="text")
      */
@@ -34,6 +35,7 @@ class Article
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $lien_youtube;
+
     /**
      * @ORM\Column(type="datetime")
      */

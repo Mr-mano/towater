@@ -60,14 +60,14 @@
                 </div>
             </div>
 
-        {% if article.noKill %}
-        <div class="no-kill">
-            <img id="nokill" class="nokill" src="{{ asset('images/no-kill.svg') }}" alt="logo to water">
-        </div>
-        {% endif %}
+            {% if article.noKill %}
+                <div class="no-kill">
+                    <img id="nokill" class="nokill" src="{{ asset('images/no-kill.svg') }}" alt="logo to water">
+                </div>
+            {% endif %}
 
             <div class="container__button-article-retour">
-                <a href="{{ path('article_index') }}" class="button-back">Retour</a>
+                <a href="{{ path('homepage') }}" class="button-back">Retour</a>
             </div>
 
         </div>

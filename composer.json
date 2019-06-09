@@ -6,6 +6,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "easycorp/easyadmin-bundle": "^2.1",
+        "knplabs/knp-paginator-bundle": "^3.0",
         "leafo/scssphp": "^0.7.7",
         "patchwork/jsqueeze": "^2.0",
         "sensio/framework-extra-bundle": "^5.3",
